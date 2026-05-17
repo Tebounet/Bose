@@ -3,17 +3,13 @@ const CACHE_NAME = "Solfier-v2"; // On change le nom pour forcer la mise à jour
   "./",
   "./index.html",
   "./manifest.json",
-  "./icon-192.png",
-  "./icon-512.png",
-  "https://cdn.jsdelivr.net/npm/vexflow@4.2.3/build/cjs/vexflow.js"
+  "./vexflow.js"
 ]; */
 
 const FILES = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./icon-192.png",
-  "./icon-512.png",
   "./vexflow.js"
 ];
 
