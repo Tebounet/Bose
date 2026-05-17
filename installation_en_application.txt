@@ -97,7 +97,7 @@ APRES UNE MISE A JOUR DU CODE :
 INSTALLATION COMME APPLICATION :
 --------------------------------
 - ouvrir Google Chrome (sur smartphone ou PC), Safari sur IPhone 
-- aller à l'URL https://tebounet.github.io/solfier/
+- aller à l'URL https://tebounet.github.io/Bose/
 - l'application est alors visible mais pas installée
 - dans le menu de Chrome (les trois petits points en haut ou bas de page), cliquer sur
   "Ajouter à l'écran d'accueil" ; 2 choix sont alors possibles, cliquer sur "Installer"
@@ -105,3 +105,6 @@ INSTALLATION COMME APPLICATION :
 Remarque : l'application une fois installée s'appelle "Chanter les notes" (cela est déterminé
 		   par le fichier manifest.json) alors que sur smartphone son nom est "solfier" dans la
 		   liste des applications --> à unifier
+		   
+Remarque 2 : le fichier index.html doit contenir la ligne suivante juste avant </head> :
+				<link rel="manifest" href="manifest.json">
