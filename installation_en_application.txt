@@ -10,7 +10,7 @@ https://choraleknds.42web.io/ a un comportement qui bloque l'installation et ne 
 simple raccourci sur l'écran d'accueil du téléphone. C'est pourquoi j'utilise les GitHub Pages.
 
 Ma GitHub Page : https://github.com/Tebounet/Bose
-Le dépôt du code : https://github.com/Tebounet/solfier.git
+Le dépôt du code : https://github.com/Tebounet/Bose.git 
 L'url de l'application : https://tebounet.github.io/solfier/ ; c'est cette url qui donne accès
 à l'application et permet de l'installer.
 
@@ -40,6 +40,11 @@ git push -u origin main
 Laissez-le en Public.
 Ne cochez aucune case (ni README, ni .gitignore).
 Cliquez sur Create repository.
+
+Important : dans GitHub, Settings > Pages, et sous "Build and deployment" :
+	. choisis la branche main
+	. vérifie que le dossier sur /(root)
+	. cliquer sur Save
 
 Copiez l'URL de votre dépôt (elle ressemble à https://github.com/votre-pseudo/solfege.git).
 
