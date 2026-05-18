@@ -1,9 +1,0 @@
-{
-  "name": "Bose",
-  "short_name": "Bose",
-  "start_url": "index.html",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
-  "orientation": "landscape",
-}
