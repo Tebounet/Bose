@@ -3,14 +3,16 @@ const CACHE_NAME = "Bose"; // On change le nom pour forcer la mise à jour
   "./",
   "./index.html",
   "./manifest.json",
-  "./vexflow.js"
+  "./icon-192.png",
+  "./icon-512.png"
 ]; */
 
 const FILES = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./vexflow.js"
+  "./icon-192.png",
+  "./icon-512.png"
 ];
 
 // Installation et mise en cache
