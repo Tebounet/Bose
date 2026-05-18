@@ -32,7 +32,7 @@
 	</head>
 <body>
 
-    <h1>Télécommande Radio Bose (v1.0)</h1>
+    <h1>Télécommande Radio Bose</h1>
     <p>Connectez votre appareil en Bluetooth à l'enceinte Bose</p>
 
     <button class="btn-radio" onclick="jouerRadio('https://radioclassique.ice.infomaniak.ch/radioclassique-high.mp3')">Radio Classique</button>
@@ -56,15 +56,14 @@ function jouerRadio(urlFlux) {
         lecteurAudio.src = urlFlux;
         lecteurAudio.play()
         .then(() => {
-            // On supprime l'alert() qui figeait l'application
-            console.log("Lecture lancée avec succès sur le flux : " + urlFlux);
+            alert("Lecture lancée ! Vérifiez que le Bluetooth est connecté.");
         })
         .catch(err => {
-            // On ne garde une alerte qu'en cas de vrai problème de réseau
-            alert("Erreur de lecture : " + err.message);
+            // Cette alerte vous dira exactement ce que Chrome refuse
+            alert("Erreur Chrome : " + err.message + " (Code: " + err.code + ")");
         });
     } catch (e) {
-        console.error("Erreur script : " + e.message);
+        alert("Erreur script : " + e.message);
     }
 }
 
