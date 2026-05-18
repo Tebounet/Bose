@@ -70,9 +70,9 @@ INSTALLATION COMME APPLICATION :
 - dans le menu de Chrome (les trois petits points en haut ou bas de page), cliquer sur
   "Ajouter à l'écran d'accueil" ; 2 choix sont alors possibles, cliquer sur "Installer"
 
-Remarque 1 : l'application une fois installée s'appelle "Chanter les notes" (cela est déterminé
-		   par le fichier manifest.json) alors que sur smartphone son nom est "solfier" dans la
-		   liste des applications --> à unifier
+Remarque 1: le fichier manifest.json détermine :
+			- le nom de l'application dans la liste des applications
+			- le noms à utiliser pour lancer l'application
 		   
-Remarque 2 : le fichier index.html doit contenir la ligne suivante juste avant </head> :
+Remarque 2: le fichier index.html doit contenir la ligne suivante dans la section head :
 				<link rel="manifest" href="manifest.json">
