@@ -1,4 +1,4 @@
-const CACHE_NAME = "Bose"; // On change le nom à chaque mise à jour du code pour forcer la mise à jour
+const CACHE_NAME = "Bose_1.0.3"; // On change le nom à chaque mise à jour du code pour forcer la mise à jour
 /* const FILES = [
   "./",
   "./index.html",

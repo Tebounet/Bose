@@ -24,12 +24,30 @@
             border: none;
             border-radius: 25px;
             cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-radio:active {
+            background-color: #1aa34a;
         }
         .btn-stop {
             background-color: #e11d48;
         }
+        .btn-stop:active {
+            background-color: #be123c;
+        }
+        #statut {
+            margin-top: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .version {
+            font-size: 12px;
+            color: #666;
+            margin-top: 40px;
+        }
     </style>
-	</head>
+</head>
 <body>
 
     <h1>Télécommande Radio Bose</h1>
@@ -39,49 +57,68 @@
     <button class="btn-radio" onclick="jouerRadio('http://audio.brossardmedia.com:8000/rtl.mp3')">RTL</button>
     
     <button class="btn-radio btn-stop" onclick="arreterRadio()">Arrêter</button>
-	<p style="font-size: 12px; color: #666; margin-top: 30px;">Version : 1.0.1</p>
+
+    <div id="statut">Prêt</div>
+    <p class="version">Version : 1.0.3 (Audio Fix)</p>
 
     <script>
-        // Création de l'élément audio unique en arrière-plan
-        let lecteurAudio = new Audio();
+        // Le lecteur est initialisé à null pour être créé proprement à chaque écoute
+        let lecteurAudio = null;
 
-<!--         function jouerRadio(urlFlux) {
-            lecteurAudio.src = urlFlux;
-            lecteurAudio.play()
-            .then(() => console.log("Lecture en cours..."))
-            .catch(err => console.error("Erreur de lecture :", err));
-        } -->
+        function jouerRadio(urlFlux) {
+            const statutDiv = document.getElementById("statut");
+            statutDiv.innerText = "Connexion au flux...";
+            statutDiv.style.color = "#ffb703"; // Orange pendant le chargement
 
-function jouerRadio(urlFlux) {
-    try {
-        lecteurAudio.src = urlFlux;
-        lecteurAudio.play()
-        .then(() => {
-            // On supprime l'alert() qui figeait l'application
-            console.log("Lecture lancée avec succès sur le flux : " + urlFlux);
-        })
-        .catch(err => {
-            // On ne garde une alerte qu'en cas de vrai problème de réseau
-            alert("Erreur de lecture : " + err.message);
-        });
-    } catch (e) {
-        console.error("Erreur script : " + e.message);
-    }
-}
+            try {
+                // Si un flux joue déjà, on l'interrompt et on nettoie l'objet précédent
+                if (lecteurAudio) {
+                    lecteurAudio.pause();
+                    lecteurAudio.src = "";
+                    lecteurAudio = null;
+                }
 
-        function arreterRadio() {
-            lecteurAudio.pause();
-            lecteurAudio.src = "";
+                // Création d'un nouvel objet à chaque appui pour contourner le blocage de Chrome
+                lecteurAudio = new Audio(urlFlux);
+                lecteurAudio.preload = "none";
+
+                lecteurAudio.play()
+                .then(() => {
+                    statutDiv.innerText = "Lecture en cours...";
+                    statutDiv.style.color = "#1db954"; // Vert quand le son démarre
+                    console.log("Flux lancé avec succès : " + urlFlux);
+                })
+                .catch(err => {
+                    statutDiv.innerText = "Erreur de lecture (" + err.message + ")";
+                    statutDiv.style.color = "#e11d48"; // Rouge en cas d'erreur
+                    console.error("Détails erreur Chrome :", err);
+                });
+
+            } catch (e) {
+                statutDiv.innerText = "Erreur Script : " + e.message;
+                statutDiv.style.color = "#e11d48";
+            }
         }
 
-        // Enregistrement du Service Worker pour la PWA
+        function arreterRadio() {
+            const statutDiv = document.getElementById("statut");
+            if (lecteurAudio) {
+                lecteurAudio.pause();
+                lecteurAudio.src = "";
+                lecteurAudio = null;
+            }
+            statutDiv.innerText = "Arrêté";
+            statutDiv.style.color = "#ffffff";
+        }
+
+        // Enregistrement optimisé au chargement complet de la page
         if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-        .then(reg => console.log('Service Worker enregistré !', reg))
-        .catch(err => console.error('Erreur SW :', err));
-    });
-}
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log("Service Worker Bose enregistré !", reg))
+                .catch(err => console.error("Échec d'enregistrement du SW :", err));
+            });
+        }
     </script>
 </body>
 </html>
