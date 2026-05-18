@@ -102,7 +102,7 @@ INSTALLATION COMME APPLICATION :
 - dans le menu de Chrome (les trois petits points en haut ou bas de page), cliquer sur
   "Ajouter à l'écran d'accueil" ; 2 choix sont alors possibles, cliquer sur "Installer"
 
-Remarque : l'application une fois installée s'appelle "Chanter les notes" (cela est déterminé
+Remarque 1 : l'application une fois installée s'appelle "Chanter les notes" (cela est déterminé
 		   par le fichier manifest.json) alors que sur smartphone son nom est "solfier" dans la
 		   liste des applications --> à unifier
 		   
